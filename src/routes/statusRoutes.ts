@@ -1,8 +1,14 @@
 import express from "express";
-import { getStatus } from "../controllers/statusController";
+import { getImageStatus } from "../controllers/statusController";
+
 
 const router = express.Router();
 
-router.get("/status/:id", getStatus);
+
+router.get(
+    "/images/:id",
+    getImageStatus
+);
+
 
 export default router;
