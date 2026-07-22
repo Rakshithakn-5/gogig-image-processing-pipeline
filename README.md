@@ -114,6 +114,17 @@ The application provides:
 - OCR Confidence
 - Extracted Text
 
+## Sample Outputs
+
+### Image 1
+![Image 1 Output](screenshots/image1-output.png)
+
+### Image 2
+![Image 2 Output](screenshots/image2-output.png)
+
+### Image 3
+![Image 3 Output](screenshots/image3-output.png)
+
 ## Author
 
 **Rakshitha K N**
