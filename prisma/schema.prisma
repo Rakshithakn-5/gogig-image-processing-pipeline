@@ -7,9 +7,9 @@ datasource db {
   provider = "postgresql"
 }
 
-
 model Image {
   id            String   @id @default(uuid())
+
   filename      String
   originalName  String
   path          String
@@ -24,19 +24,40 @@ model Image {
   analysis      Analysis?
 }
 
-
 model Analysis {
+
   id          String   @id @default(uuid())
 
   imageId     String   @unique
   image       Image    @relation(fields: [imageId], references: [id])
 
+  // Image Information
+  width       Int
+  height      Int
+
+  // Image Quality
   blurry      Boolean
   lowLight    Boolean
   duplicate   Boolean
-  ocrText     String?
 
-  confidence Float
+  averageBrightness Float
+
+  // OCR
+  ocrText     String?
+  confidence  Float
+
+  // EXIF Metadata
+  hasExif     Boolean?
+
+  cameraModel String?
+
+  software    String?
+
+  dateTaken   String?
+
+  gpsLatitude Float?
+
+  gpsLongitude Float?
 
   createdAt   DateTime @default(now())
 }

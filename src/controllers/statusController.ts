@@ -8,8 +8,10 @@ export const getImageStatus = async (
   try {
     const id = req.params.id as string;
 
-    const image = await prisma.image.findUnique({
-      where: { id },
+    const image = await prisma.image.findFirst({
+      where: {
+        id,
+      },
     });
 
     if (!image) {
@@ -28,16 +30,18 @@ export const getImageStatus = async (
     res.json({
       processingId: image.id,
       status: image.status,
+
       image: {
         filename: image.filename,
         originalName: image.originalName,
         uploadedAt: image.createdAt,
       },
+
       analysis,
     });
 
   } catch (err) {
-    console.error(err);
+    console.log(err);
 
     res.status(500).json({
       message: "Internal Server Error",
